@@ -14,6 +14,7 @@ app.use(express.static(publicPath));
 
 
 const subfolder = express.Router();
+app.use(subdomain('api', subfolder));
 // app.use(subdomain('subfolder', app.subfolder));
 subfolder.get("/",(req,res)=>{
     res.send(req.body)
@@ -52,7 +53,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
  });
 
- app.use(subdomain('api', subfolder));
+ 
 //tworzenie zmiennej która przekaże dane do heroku, dodatkowo należy dopisać w package.jeson w scripts : "web": "index.js"
 const herokuPort = process.env.PORT || 5000;
 //nasłuchiwanie app na jakim porcie na działać
