@@ -8,20 +8,34 @@ app.use(express.json());
 
 const regestryUsers = [];
 const loginUserDatabase = [];
+const responses = []
 
 const publicPath = path.join(__dirname, '..', 'public');
 app.use(express.static(publicPath));
 
 
-const subfolder = express.Router();
-app.use(subdomain('api', subfolder));
-// app.use(subdomain('subfolder', app.subfolder));
-subfolder.get("/",(req,res)=>{
-    res.send(req.body)
-})
-subfolder.get("/api/regestry",(req,res)=>{
-    res.json({ regestryUsers });
-})
+const router = express.Router();
+app.use(subdomain('api', router));
+router.get('/', function(req, res) {
+    res.send(req.body);
+});
+router.get('/api/regestry', function(req, res) {
+    res.json({responses});
+});
+router.post(
+    "/api/regestry",(req, res) => {
+    responses.push(req.body);
+      res.status(200).end;
+    })
+
+// app.use(subdomain('api', subfolder));
+
+// subfolder.get("/",(req,res)=>{
+//     res.send(req.body)
+// })
+// subfolder.get("/api/regestry",(req,res)=>{
+//     res.json({ regestryUsers });
+// })
 
 //przekazywania danych na stronę sewera
 app.get("/", (req, res) => {
