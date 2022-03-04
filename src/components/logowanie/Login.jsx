@@ -8,7 +8,7 @@ const Login = (props) => {
     password: "",
     id: "",
   });
-  const [backEndReg, setBackEndReg] = React.useState(true);
+  const [backEndReg, setBackEndReg] = React.useState('');
 
   //    pobieranie wartości pól logowania (z inputów)
   const loginValues = (e) => {

@@ -1,14 +1,26 @@
 const express = require("express");
 const cors = require("cors");
+var subdomain = require('express-subdomain');
 const app = express();
 app.use(cors())
 const path = require('path');
-
 app.use(express.json());
+
 const regestryUsers = [];
 const loginUserDatabase = [];
+
 const publicPath = path.join(__dirname, '..', 'public');
 app.use(express.static(publicPath));
+
+
+const subfolder = express.Router();
+// app.use(subdomain('subfolder', app.subfolder));
+subfolder.get("/",(req,res)=>{
+    res.send(req.body)
+})
+subfolder.get("/api/regestry",(req,res)=>{
+    res.json({ regestryUsers });
+})
 
 //przekazywania danych na stronę sewera
 app.get("/", (req, res) => {
@@ -39,6 +51,8 @@ res.json({ loginUserDatabase });
 app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
  });
+
+ app.use(subdomain('api', subfolder));
 //tworzenie zmiennej która przekaże dane do heroku, dodatkowo należy dopisać w package.jeson w scripts : "web": "index.js"
 const herokuPort = process.env.PORT || 5000;
 //nasłuchiwanie app na jakim porcie na działać
