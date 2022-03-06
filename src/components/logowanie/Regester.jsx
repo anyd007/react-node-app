@@ -7,7 +7,7 @@ const Regester = (props) => {
 
   // przesyłanie na serwer express
   const sendRegestryToBackEnd = (username, password, repassword) => {
-    fetch('http://localhost:5000/api/regestry', {
+    fetch('/api/regestry', {
       method: "POST",
       body: JSON.stringify({
         id: uniqid(),
