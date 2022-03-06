@@ -16,6 +16,7 @@ const Regester = (props) => {
         repassword: repassword,
       }),
       headers: { "Content-type": "application/json" },
+      
     })
     .catch((error) => {
       console.log(error)
