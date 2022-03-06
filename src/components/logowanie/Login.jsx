@@ -61,13 +61,7 @@ const Login = (props) => {
   React.useEffect(() => {
     fetch('http://localhost:5000/api/regestry')
       .then((res) => res.json())
-      .then((data) =>
-        setBackEndReg(
-          data.regestryUsers.map((el) => {
-            return { username: el.username, password: el.password, id: el.id };
-          })
-        )
-      )
+      .then((data) => setBackEndReg(data.map((el) =>{return({username:el.username, password:el.password, id:el.id })})))
       .catch((error) => {
         console.log(error)
       });

@@ -72,40 +72,34 @@ export class DatabaseUser extends Component {
   };
 
   //   przesyłanie danych na beckend
-  sendToBackEnd = async (playerName, playerClub, position, highScore) => {
-    try{
-   await fetch(`${process.env.REACT_APP_REG_LOCALHOST}/${process.env.REACT_APP_USER_DB_API}`, {
+  sendToBackEnd = (playerName, playerClub, position, highScore) => {
+    fetch("http://localhost:5000/api/loginUserDatabase", {
       method: "POST",
       body: JSON.stringify({
-        id: this.state.loginData.map((el) => el.id).join(''), //przekazywanie id z panelu logowania bo bazy danych
+        id: this.state.loginData.map((el) => el.id).join(""), //przekazywanie id z panelu logowania bo bazy danych
         playerName: playerName,
         playerClub: playerClub,
         position: position,
-        highScore: highScore
-        
+        highScore: highScore,
       }),
       headers: { "Content-Type": "Application/Json" },
-    })}
-    catch(error){
-      console.error(error);
-    }
+    });
   };
 
   // odbieranie danych z express
   getData = () => {
-    fetch(`${process.env.REACT_APP_REG_LOCALHOST}/${process.env.REACT_APP_USER_DB_API}`)
-      
+    fetch("http://localhost:5000/api/loginUserDatabase")
       .then((res) => res.json())
-      .then((data) => data.loginUserDatabase)
+      // .then((data) => data.loginUserDatabase)
       .then((data) => {
         this.setState({
-          saveData: data.filter(el=> {
-            return el.id == this.state.loginData.map(el=>el.id)  //fitrowanie wyświtlania danych wg klucza id
-          })
+          saveData: data.filter((el) => {
+            return el.id == this.state.loginData.map((el) => el.id); //fitrowanie wyświtlania danych wg klucza id
+          }),
         });
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
   // update bazy danych wyświtlanej dla urzytkownika
@@ -206,11 +200,19 @@ export class DatabaseUser extends Component {
                 <th className="databaseTh">NAJWYŻSZA ILOŚC PUNKTÓW</th>
               </tr>
               {this.state.saveData.map((el) => (
-                <tr key= {uniqid()} className="databaseTr">
-                  <td key={el.playerName} className="databaseTd">{el.playerName}</td>
-                  <td key={el.playerClub} className="databaseTd">{el.playerClub}</td>
-                  <td key={el.position} className="databaseTd">{el.position}</td>
-                  <td key={el.highScore} className="databaseTd">{el.highScore}</td>
+                <tr key={uniqid()} className="databaseTr">
+                  <td key={el.playerName} className="databaseTd">
+                    {el.playerName}
+                  </td>
+                  <td key={el.playerClub} className="databaseTd">
+                    {el.playerClub}
+                  </td>
+                  <td key={el.position} className="databaseTd">
+                    {el.position}
+                  </td>
+                  <td key={el.highScore} className="databaseTd">
+                    {el.highScore}
+                  </td>
                 </tr>
               ))}
             </tbody>
