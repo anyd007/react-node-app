@@ -31,13 +31,15 @@ mongoose
       next(); // przechodzimy dalej
     });
     app.use(cors()); //dalsza walka z cors
+    app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     app.use(favicon(__dirname + '/build/favicon.ico'))
-    app.use(express.static('src'))
-    app.use(express.static(path.join(__dirname, 'build')))
-  app.get('*', (req, res) => {
-  res.sendFile( path.join(__dirname + '/build/index.html'))
-})
+    if (process.env.NODE_ENV !== 'development') {
+      app.use(express.static('public'))}
+    // app.use(express.static(path.join(__dirname, 'build')))
+//   app.get('*', (req, res) => {
+//   res.sendFile( path.join(__dirname + '/build/index.html'))
+// })
     app.use("/api", routes); //app bedzie uzywać /api oraz odniesienie do pliku routers
 
     //tworzenie zmiennej która przekaże dane do heroku, dodatkowo należy dopisać w package.jeson w scripts : "web": "index.js"
