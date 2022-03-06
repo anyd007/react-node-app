@@ -27,11 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run client-install && npm run client-build",
-    "client-install": "cd client && npm install",
-    "client-build": "cd client && npm run build"
-    
-  },
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd .. && cd client && npm install && npm run build"
+    },
   "eslintConfig": {
     "extends": [
       "react-app",
