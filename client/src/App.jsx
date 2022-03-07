@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Login from "./components/logowanie/Login";
 import Regester from "./components/logowanie/Regester";
+import AdminPanel from "./components/adminPanel/AdminPanel";
 import { DatabaseUser } from "./components/database/DatabaseUser";
 import "./App.css";
 
@@ -11,6 +12,7 @@ class App extends Component {
       loginActive: true,
       regActive: false,
       adminActive: false,
+      masterAdminActive: false,
       loginData:[]
     };
   }
@@ -38,6 +40,7 @@ class App extends Component {
       this.setState({ adminActive: true });
       this.setState({ loginActive: false });
       this.setState({ regActive: false });
+     
     }
   };
   handleAdminExit = () => {
@@ -48,6 +51,15 @@ class App extends Component {
       this.setState({ loginActive: true });
     }
   };
+  handleMasterAdminLogin = () =>{
+    const loginActive = this.state;
+    const masterAdminActive = this.state;
+    if(loginActive){
+      this.setState({masterAdminActive:true});
+      this.setState({loginActive:false})
+    }
+
+  }
   handleGetData = (val) =>{   //przypisywanie danych z logowania do pustej tablicy
     this.setState({
         loginData: val
@@ -59,6 +71,7 @@ class App extends Component {
     const { loginActive } = this.state;
     const { adminActive } = this.state;
     const { regActive } = this.state;
+    const {masterAdminActive} = this.state
     return (
       <div className="app">
         <div className="login">
@@ -67,6 +80,7 @@ class App extends Component {
               <Login
                 onRegestry={() => this.handleShowReg()}
                 odAdminLogin={() => this.handleAdminLogin()}
+                onMasterAdminLogin={()=> this.handleMasterAdminLogin()}
                 sentData={this.handleGetData} //przyjmowanie danych z komponentu dziecko login.jsx
               />
             )}
@@ -82,6 +96,11 @@ class App extends Component {
                 getDataFromLogin={loginData}/>  //wysłanie stanu przekazanego z login.jsx do databaseuser
             )}
           </div>
+        </div>
+        <div className="adminPanel">
+          { masterAdminActive &&
+          <AdminPanel />
+          }
         </div>
       </div>
     );

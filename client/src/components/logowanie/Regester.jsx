@@ -4,10 +4,9 @@ import uniqid from "uniqid";
 import "./style.css";
 
 const Regester = (props) => {
-
   // przesyłanie na serwer express
   const sendRegestryToBackEnd = (username, password, repassword) => {
-    fetch('/api/regestry', {
+    fetch("/api/regestry", {
       method: "POST",
       body: JSON.stringify({
         id: uniqid(),
@@ -16,13 +15,10 @@ const Regester = (props) => {
         repassword: repassword,
       }),
       headers: { "Content-type": "application/json" },
-      
-    })
-    .catch((error) => {
-      console.log(error)
+    }).catch((error) => {
+      console.log(error);
     });
   };
-  
 
   const [userName, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");

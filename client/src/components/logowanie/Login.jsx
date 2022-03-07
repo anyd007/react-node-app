@@ -131,6 +131,9 @@ const Login = (props) => {
         >
           rejestracja
         </button>
+        <button 
+        onClick={()=> props.onMasterAdminLogin()}
+        type="button" className="btn">ADMIN</button>
       </div>
     </div>
   );

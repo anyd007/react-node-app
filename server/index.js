@@ -17,7 +17,7 @@ mongoose
     const app = express(); //twożymy app
     app.use(function (req, res, next) {
       //walczymy z cors
-      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.setHeader(
         "Access-Control-Allow-Methods",
         "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -34,8 +34,8 @@ mongoose
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     app.use("/api", routes); //app bedzie uzywać /api oraz odniesienie do pliku routers
-    app.use(favicon(__dirname + '/build/favicon.ico'))
-    app.use(express.static(path.join(__dirname, '../client/build')));
+    app.use(favicon(__dirname + '/build/favicon.ico')) //usunięcie problemu z błędem favicon
+    app.use(express.static(path.join(__dirname, '../client/build'))); //ustawienie dostępu do plików statycznych dla express
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
