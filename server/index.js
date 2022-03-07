@@ -17,7 +17,7 @@ mongoose
     const app = express(); //twożymy app
     app.use(function (req, res, next) {
       //walczymy z cors
-      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
       res.setHeader(
         "Access-Control-Allow-Methods",
         "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -37,7 +37,7 @@ mongoose
     app.use(favicon(__dirname + '/build/favicon.ico'))
     app.use(express.static(path.join(__dirname, '../client/build')));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../client/index.html'));
+      res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
 
     //tworzenie zmiennej która przekaże dane do heroku, dodatkowo należy dopisać w package.jeson w scripts : "web": "index.js"
