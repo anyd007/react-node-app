@@ -60,6 +60,14 @@ class App extends Component {
     }
 
   }
+  handleExitMasterAdminPanel = () =>{
+    const masterAdminActive = this.state
+    const loginActive = this.state
+    if(masterAdminActive){
+      this.setState({masterAdminActive:false})
+      this.setState({loginActive:true})
+    }
+  }
   handleGetData = (val) =>{   //przypisywanie danych z logowania do pustej tablicy
     this.setState({
         loginData: val
@@ -99,7 +107,9 @@ class App extends Component {
         </div>
         <div className="adminPanel">
           { masterAdminActive &&
-          <AdminPanel />
+          <AdminPanel 
+          onExitMasterAdminPanel={()=>this.handleExitMasterAdminPanel()}
+          />
           }
         </div>
       </div>

@@ -10,44 +10,32 @@
     top: 0%;
     z-index: -1;
 }
-.dbMainContener{
-    text-align: center;
-    /* margin-top: 25px; */
-}
-label{
-    font-size: 15px;
-    color: white;
-}
-.dbForm{
-    text-align: center;
-    display: flex;
-}
-.dbFormGroup{
-    width: 100%;
-    margin: 10px;
-}
-/* .dbContent{
-    position: fixed;
-    top:12%
-} */
-.dbHeader{
-    margin-bottom: 20px;
-    color: white;
-    font-size: 35px;
-}
-.dbHeaderView{
-    width: 100%;
-    margin-bottom: 20px;
-    color: white;
-    font-size: 35px;
-}
-.dbFooter{
-    margin-top: -30px;
-    text-align: center;
-    width: 100%;
+.adminbackgroundblur{
     position: absolute;
+    /* display: none; */
+    top:0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+    backdrop-filter: blur(8px);
+    }
+    .adminLoginWarrinig{
+    position: fixed;
+    /* display: none; */
     left: 50%;
-    transform: translate(-50%);
+    top:40%;
+    transform: translate(-50%, -50%);
+    height: 60%;
+    width: 70%;
+    background-color: black;
+    z-index: 5;
+    border-radius: 7px;
+    opacity: 0.8;
+    }
+.adminLoginPanel{
+    position: fixed;
+    top: 15%;
 }
 .dbBtn{
     color: black;
@@ -60,29 +48,29 @@ label{
     cursor: pointer;
     transition: all 250ms ease-in-out;
 }
+.selectUser{
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
 .dbBtn:hover{
     background-color: #8a872e;
     box-shadow: 0px 0px 12px 0.8px rgb(212, 234, 236);
 }
-.viewMainDb{
-    margin-top: 60px;
-    text-align: center;
-    color: white;
-    position: relative;
-    top:40%;
+.badloginwarr{
+    width: 100%;
     left: 50%;
     transform: translate(-50%);
-
+    position: fixed;
+    top: 75%;
 }
-.tableContener{
-    border-spacing: 0 25px;
-    width: 98%;
-    margin: 3px;
+.badloginwarr h3{
+    color: tomato;
 }
-.databaseTd{
-    border: solid 1px white;
-    border-radius: 5px;
-    padding: 3px;
-    font-size: 25px;
-    
-} 
+#closeAdminPanelBtn{
+    position: fixed;
+    right: 1%;
+    top: -6%;
+}

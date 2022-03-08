@@ -86,16 +86,6 @@ const Login = (props) => {
       <div className="header">Stwórz swój dream team NBA</div>
       <div className="content">
         <div className="form">
-          {/* <div className="form-group">
-                                <label htmlFor="adminName">trener</label>
-                                <input type='text' name="adminName" placeholder="nazwa admina..."/>
-                            </div>
-                             <div className="form-group">
-                                <label htmlFor="adminpassword">hasło trenera</label>
-                                <input type='text' name="adminpassword" placeholder="hasło admina..."/>
-                            </div>
-                            <button type="button" className="btn" id="adminBtn">logowanie admina</button> */}
-
           <div className="form-group">
             <label htmlFor="username">nazwa użytkownika</label>
             <input
