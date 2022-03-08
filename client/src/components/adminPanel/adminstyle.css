@@ -38,7 +38,7 @@
     left: 50%;
     transform: translate(-50%);
     position: fixed;
-    top: 15%;
+    top: 10%;
 }
 .dbBtn{
     color: black;
@@ -64,6 +64,7 @@
 }
 
 #warrn{
+    font-size: 25px;
     width: 100%;
     left: 50%;
     transform: translate(-50%);
@@ -77,10 +78,10 @@
     top: -6%;
 }
 .btnSection{
-   
+    bottom: 7%;
     width: 100%;
     left: 50%;
     transform: translate(-50%);
     position: fixed;
-    top: 65%;
+   
 }
