@@ -107,30 +107,39 @@ const AdminPanel = (props) => {
             onChange={inputValues}
             placeholder="hasło..."
           />
-          <button onClick={() => adminLoginBtn()} type="button" className="btn">
-            ZALOGUJ
-          </button>
-          <button
-            onClick={() => props.onExitMasterAdminPanel()}
-            type="button"
-            className="btn"
-          >
-            ZAMKNIJ
-          </button>
+          <div className="btnSection">
+            <button
+              onClick={() => adminLoginBtn()}
+              type="button"
+              className="btn"
+            >
+              ZALOGUJ
+            </button>
+            <button
+              onClick={() => props.onExitMasterAdminPanel()}
+              type="button"
+              className="btn"
+            >
+              ZAMKNIJ
+            </button>
+          </div>
         </div>
         <div style={{ display: "none" }} className="badloginwarr">
-          <h3>
+          <h3 id="warrn">
             PODANE DANE SĄ BŁĘDNE JEŻELI NIE, JESTEŚ OSOBĄ UPRAWNIONĄ ZAMKNIJ TĄ
             STRONĘ
           </h3>
         </div>
       </div>
       <div className="viewMainDb">
-        <button 
-        onClick={() => props.onExitMasterAdminPanel()}
-        type="button" 
-        className="btn" 
-        id="closeAdminPanelBtn">ZAMKNIJ</button>
+        <button
+          onClick={() => props.onExitMasterAdminPanel()}
+          type="button"
+          className="btn"
+          id="closeAdminPanelBtn"
+        >
+          ZAMKNIJ
+        </button>
         <div className="dbHeaderView">WITAJ BOSSIE....MOŻESZ DZIAŁAĆ</div>
         <div className="filterBar">
           <form>
