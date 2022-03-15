@@ -86,3 +86,14 @@ label{
     font-size: 25px;
     
 } 
+.deleteBtn{
+    cursor: pointer;
+}
+.deleteIcon{
+    display: none;
+    float: right;
+    cursor: pointer;
+}
+.showIcon:hover .deleteIcon{
+    display: block;
+}

@@ -34,5 +34,9 @@ router.post("/loginUserDatabase", async (req, res)=>{
 	await post.save()
 	res.send.post
 })
+router.delete("/loginUserDatabase/:id", async (req,res)=>{
+	const result = await UsersData.deleteOne({_id: req.params.id})
+	res.send(result)
+})
 
 module.exports = router

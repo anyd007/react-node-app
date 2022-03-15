@@ -3,6 +3,7 @@ import React from "react";
 import Login from "../logowanie/Login";
 import { validInputs } from "../logowanie/testreg";
 import uniqid from "uniqid";
+import { FaTimesCircle } from 'react-icons/fa';
 import "./dbstyle.css";
 
 export class DatabaseUser extends Component {
@@ -113,6 +114,19 @@ export class DatabaseUser extends Component {
   componentDidMount() {
     this.getData();
   }
+  //usówanie elementów uzytkownika
+  deletePosition=(_id)=>{
+    return fetch(`/api/loginUserDatabase/${_id}`, {
+      method: "DELETE"
+    })
+  }
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.saveData !== this.state.saveData){
+      setTimeout(()=>{
+        this.getData()
+      }, 100)
+    }
+  }
   render() {
     const { userInputs } = this.state;
     //    odblokowanie buttona "dodaj" jeżeli żaden input nie jest pusty
@@ -200,7 +214,7 @@ export class DatabaseUser extends Component {
                 <th className="databaseTh">NAJWYŻSZA ILOŚC PUNKTÓW</th>
               </tr>
               {this.state.saveData.map((el) => (
-                <tr key={uniqid()} className="databaseTr">
+                <tr key={uniqid()} className="databaseTr showIcon">
                   <td key={el.playerName} className="databaseTd">
                     {el.playerName}
                   </td>
@@ -212,6 +226,12 @@ export class DatabaseUser extends Component {
                   </td>
                   <td key={el.highScore} className="databaseTd">
                     {el.highScore}
+                    <div
+                    type="button"
+                    onClick={()=>this.deletePosition(el._id)}
+                    className="deleteIcon">
+                  <FaTimesCircle />
+                  </div>
                   </td>
                 </tr>
               ))}
